@@ -14,28 +14,14 @@ export class MetaCoinService {
   }
 
   getBalance(account: string): Observable<number> {
-    let meta;
     return Observable.fromPromise(this.MetaCoin.deployed().then((instance) => {
-      meta = instance;
-      return meta.getBalance.call(account, {from: account})
-        .then((value) => {
-          return value;
-        })
-        .catch((e) => {
-          console.error(e);
-          throw(e);
-        });
+      return instance.getBalance.call(account, {from: account});
     }));
   }
 
   sendCoin(from: string, to: string, amount: number): Observable<{}> {
     return Observable.fromPromise(this.MetaCoin.deployed().then((instance) => {
-      return instance.sendCoin(to, amount, {from: from})
-        .then(() => {})
-        .catch((e) => {
-          console.error(e);
-          throw(e);
-        });
+      return instance.sendCoin(to, amount, {from: from});
     }));
   }
 }

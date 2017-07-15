@@ -24,14 +24,9 @@ export class AppComponent {
 
 
   onReady() {
-    this.web3Service.getAccounts().subscribe((accounts: string[]) => {
-      this.accounts = accounts;
-      this.account = accounts[0];
-
-      this.refreshBalance();
-    }, error => {
-      alert(error);
-    });
+    this.accounts = this.web3Service.getAccounts();
+    this.account = this.accounts[0];
+    this.refreshBalance();
   }
 
   refreshBalance() {

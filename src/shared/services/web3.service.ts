@@ -34,7 +34,7 @@ export class Web3Service {
     return this.web3.currentProvider;
   }
 
-  getAccounts(): Observable<string[]> {
-    return Observable.of(this.web3.eth.accounts);
+  getAccounts(): string[] {
+    return this.web3.eth.accounts;
   }
 }
